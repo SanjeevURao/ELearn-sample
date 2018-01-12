@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+from django.template import loader
+
 
 def index(request):
-    return HttpResponse("<h1>Hello World!</h1>")
+    template = loader.get_template('home/index.html')
+    a=[1,2,3]
+    context={
+        'a': a,
+    }
+    return HttpResponse(template.render(context,request))
