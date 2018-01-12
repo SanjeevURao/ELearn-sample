@@ -1,10 +1,33 @@
 {% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %} " />
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">LearnEasy</a>
+    </div>
+      <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
 
-<ul>
-    {% for element in a %}
-       <li> {{element}}</li>
-    {% endfor %}
 
-</ul>
+<div>
+    <h1>Join a course online</h1>
+    <a target="_blank" href="http://www.coursera.org ">
+        <img  class="img-thumbnail" src="{% static 'home/images/coursera.png' %} " />
+    </a>
+    <a target="_blank" href="https://in.udacity.com/">
+        <img  class="img-thumbnail" src="{% static 'home/images/udac.jpg' %} " />
+    </a>
+    <a target="_blank" href="https://www.udemy.com/">
+        <img  class="img-thumbnail" src="{% static 'home/images/udemy.png' %}" />
+    </a>
+
+</div>
