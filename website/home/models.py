@@ -13,3 +13,6 @@ class Instructor(models.Model):
     Name = models.CharField(max_length=100)
     Phone = models.CharField(max_length=15)
     Email = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.Name
