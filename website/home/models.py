@@ -1,3 +1,15 @@
 from django.db import models
 
-# Create your models here.
+
+class Course(models.Model):
+    Name = models.CharField(max_length=100)
+    Code = models.CharField(max_length=10)
+    Credits = models.IntegerField()
+    Is_Core = models.BooleanField()
+    semester = models.IntegerField()
+    Instructor = models.CharField(max_length=100)
+
+class Instructor(models.Model):
+    Name = models.CharField(max_length=100)
+    Phone = models.CharField(max_length=15)
+    Email = models.CharField(max_length=100)
