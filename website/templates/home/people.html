@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+{% block body %}
+
+{% for instructor in people %}
+<ul>
+    <li>
+        <p>{{ instructor.Name }}</p>
+    </li>
+</ul>
+{% endfor %}
+
+{% endblock %}

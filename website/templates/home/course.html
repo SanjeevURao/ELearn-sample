@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<h1>Course List</h1>
+
+{% for c in course%}
+<ul>
+    <li>
+        <p>{{ c.Name }}</p>
+    </li>
+</ul>
+{% endfor %}
+
+{% endblock %}
