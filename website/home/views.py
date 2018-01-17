@@ -1,11 +1,9 @@
-from django.http import  Http404
 from django.template import loader
 from django.shortcuts import render , redirect
 from django.contrib.auth import authenticate , login
 from django.views.generic import View
 from .models import Instructor , Course
-from django.views import generic
-from django.views.generic.edit import CreateView , UpdateView , DeleteView
+from django.views.generic.edit import CreateView , UpdateView
 from .forms import UserForm
 
 def index(request):
@@ -31,6 +29,43 @@ class CourseAdd(CreateView):
     model = Course #trying to create a new album
     fields=['Name' , 'Code' , 'Credits' , 'Semester' , 'Instructor']
 
+class CourseUpdate(UpdateView):
+    model = Course #trying to create a new album
+    fields=['Name' , 'Code' , 'Credits' , 'Semester' , 'Instructor']
+
+#
+# class LoginView(View):
+#
+#     form_class = Login
+#     template_name = 'home/login.html'
+#
+#     # show blank form
+#     def get(self, request):
+#         form = self.form_class(None)
+#         return render(request, self.template_name, {'form': form})
+#
+#     def post(self, request):
+#
+#         form = self.form_class(request.POST)
+#
+#         if form.is_valid():
+#
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#
+#             user = authenticate(username=username , password=password)
+#
+#             if user is not None:
+#
+#                 if user.is_active:
+#
+#                    login(request, user)
+#
+#                    return redirect('home:index')
+#
+#         # if fails , then return form
+#
+#         return render(request , self.template_name , {'form' : form})
 
 
 class UserFormView(View):
@@ -56,6 +91,8 @@ class UserFormView(View):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
+            #can not directly update password because it is stored  as a hash value
+
             user.set_password(password)
 
             #save info to DB
@@ -68,11 +105,12 @@ class UserFormView(View):
 
                 if user.is_active:
 
-                   login(request,user)
+                   login(request, user)
 
-                   return redirect('home:index')
+                   return redirect('home:people')
 
-        #if fails , then return form
+        # if fails , then return form
+
         return render(request , self.template_name , {'form' : form})
 
 
