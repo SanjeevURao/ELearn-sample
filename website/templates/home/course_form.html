@@ -1,6 +1,5 @@
 {% extends 'home/base.html' %}
 {% block title %}Add a New Course{% endblock %}
-{% block albums_active %}active{% endblock %}
 
 {% block body %}
 <h1>Add Relevant courses</h1>
@@ -11,9 +10,11 @@
         <div class="col-sm-12 col-md-7">
             <div class="panel panel-default">
                 <div class="panel-body">
-
-
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                    <h3>Add a New Course</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% include 'home/form_template.html' %}
                         <div class="form-group">
@@ -22,13 +23,9 @@
                             </div>
                         </div>
                     </form>
-
-
                 </div>
             </div>
-        </div>
-
-    </div>
+</div>
 
 </div>
 {% endblock %}

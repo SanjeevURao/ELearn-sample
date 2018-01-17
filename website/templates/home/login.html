@@ -1,14 +1,51 @@
-{% extends 'home/base.html' %}
-{% block title %}Login{% endblock %}
+<head>
+      <meta charset="UTF-8">
+      <title>Home</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/welcome.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-{% block body %}
-<h1>Login!</h1>
-<div class="container-fluid">
+<style>
+    h1 {
+        color:white;
+    }
+</style>
+
+
+</head>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">LearnEasy</a>
+        </div>
+          <ul class="nav navbar-nav">
+          </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-search"> Search</span></a></li>
+            <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        </ul>
+      </div>
+    </nav>
+
+<div class="home" >
+     <h1 class="homeText">Welcome to LearnEasy</h1>
+    <h1 class="homeText">Login To Access Hundreds of Tutorials</h1>
+</div>
+
+<div class="container-fluid" >
 
     <div class="row">
 
-        <div class="col-sm-12 col-md-7">
-            <div class="panel panel-default">
+        <div class="col-sm-12 col-md-2" >
+            <h1 style="color:white">Login</h1>
+            <div class="panel panel-default" >
                 <div class="panel-body">
 
                      <form class="login" method="POST" action="/login/">
@@ -28,4 +65,3 @@
     </div>
 
 </div>
-{% endblock %}

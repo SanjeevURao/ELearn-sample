@@ -20,7 +20,7 @@ def people(request):
     return render(request , 'home/people.html' , {'people': all_people } )
 
 
-
+@login_required(login_url='login')
 def CourseView(request):
     course_list = Course.objects.all()
     template = loader.get_template('home/course.html')
@@ -36,39 +36,6 @@ class CourseUpdate(UpdateView):
     model = Course #trying to create a new album
     fields=['Name' , 'Code' , 'Credits' , 'Semester' , 'Instructor']
 
-#
-# class LoginView(View):
-#
-#     form_class = Login
-#     template_name = 'home/login.html'
-#
-#     # show blank form
-#     def get(self, request):
-#         form = self.form_class(None)
-#         return render(request, self.template_name, {'form': form})
-#
-#     def post(self, request):
-#
-#         form = self.form_class(request.POST)
-#
-#         if form.is_valid():
-#
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#
-#             user = authenticate(username=username , password=password)
-#
-#             if user is not None:
-#
-#                 if user.is_active:
-#
-#                    login(request, user)
-#
-#                    return redirect('home:index')
-#
-#         # if fails , then return form
-#
-#         return render(request , self.template_name , {'form' : form})
 
 
 class UserFormView(View):
@@ -110,7 +77,7 @@ class UserFormView(View):
 
                    login(request, user)
 
-                   return redirect('home:people')
+                   return redirect('home:index')
 
         # if fails , then return form
 

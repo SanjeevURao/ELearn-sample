@@ -1,0 +1,8 @@
+body {
+    background-image:   url("images/bck.jpg");
+    background-size:cover
+}
+
+.homeText{
+    text-align : center;
+}
