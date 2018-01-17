@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^login/$','django.contrib.auth.views.login', {'template_name': 'home/login.html'} ,name='login'),
     url(r'^course$' , views.CourseView, name='course'),
     url(r'^course/add$' , views.CourseAdd.as_view(), name='addcourse'),
+    url(r'^logout/$','django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
 ]
 

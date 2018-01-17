@@ -5,7 +5,10 @@ from django.views.generic import View
 from .models import Instructor , Course
 from django.views.generic.edit import CreateView , UpdateView
 from .forms import UserForm
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='login')
 def index(request):
     template = loader.get_template('home/index.html')
     return render(request,'home/index.html')
