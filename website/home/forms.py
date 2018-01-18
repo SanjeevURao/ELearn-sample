@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 
 from django import forms
+from .models import Instructor , Course , Interest
 
 
 class UserForm(forms.ModelForm):
@@ -14,7 +15,13 @@ class UserForm(forms.ModelForm):
         fields = ['username' , 'email' , 'password']
 
 
+class InterestForm(forms.ModelForm):
 
+    #this class is info abt the form
+    class Meta:
+        model = Interest
+
+        fields = ['Name']
 
 class Login(forms.ModelForm):
 

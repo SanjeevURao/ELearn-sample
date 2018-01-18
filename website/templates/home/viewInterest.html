@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+<h1>Interests</h1>
+
+{% for c in interests %}
+<ul>
+    <li>
+        <p>{{ c.Name }}</p>
+    </li>
+</ul>
+{% endfor %}
+
+{% endblock %}

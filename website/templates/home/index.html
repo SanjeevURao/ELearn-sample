@@ -3,40 +3,68 @@
 {% block body %}
 <title>Home</title>
     <p style="font-family: 'Lobster';font-size: 40px;">Welcome {{ request.user.username }}</p>
-    <img src="{% static 'home/images/books.jpg' %}" style="width: 100%; height: 500px;" />
-    <div style="display: inline-block;
-        padding-top: 50px;
-        padding-right: 80px;
-        padding-bottom: 50px;
-        padding-left: 80px;
-        width:49% ; ">
+    <div>
+    </div>
 
-        <h1 align="left"> <b>Video Tutorials</b> </h1>
+    <div class="col-sm-2 sidenav">
+        <p style="font-family: 'Lobster'; font-size: 40px;">Interests</p>
+        <ul>
+
+        {% for c in interests %}
+                <li>
+                    <p>{{ c.Name }}</p>
+                        <form action="{% url 'home:deleteinterest' c.id %}" method="post">{% csrf_token %}
+                            <input type="submit" value="Delete" />
+                        </form>
+                </li>
+        {% endfor %}
+		</ul>
+    </div>
+
+
+    <div class="col-sm-8 text-left">
+
+
+
+        <h1>Video Tutorials</h1>
             <img  class="figure-img img-fluid rounded" src="{% static 'home/images/java.png' %} " style="width:200px;height:200px" />
 
             <img  class="figure-img img-fluid rounded" src="{% static 'home/images/algebra.png' %} " style="width:200px;height:200px" />
 
             <img  class="figure-img img-fluid rounded" src="{% static 'home/images/dbs.jpeg' %} " style="width:200px;height:200px" />
+            <br>
+                <h1>Free Courses</h1>
+
+            <a target="_blank" href="http://www.coursera.org ">
+                <img  class="figure-img img-fluid rounded" src="{% static 'home/images/coursera.png' %} " />
+            </a>
+            <a target="_blank" href="https://in.udacity.com/">
+             <img  class="figure-img img-fluid rounded" src="{% static 'home/images/udac.jpg' %} " />
+            </a>
+            <a target="_blank" href="https://www.udemy.com/">
+                <img  class="figure-img img-fluid rounded" src="{% static 'home/images/udemy.png' %}" />
+            </a>
+
 
     </div>
 
 
-    <div style="display: inline-block; text-align:center ; padding-top: 50px;
-        padding-right: 80px;
-        padding-bottom: 50px;
-        padding-left: 80px;
-        width:49%">
-        <h1>Join a course online</h1>
-        <a target="_blank" href="http://www.coursera.org ">
-            <img  class="figure-img img-fluid rounded" src="{% static 'home/images/coursera.png' %} " />
-        </a>
-        <a target="_blank" href="https://in.udacity.com/">
-            <img  class="figure-img img-fluid rounded" src="{% static 'home/images/udac.jpg' %} " />
-        </a>
-        <a target="_blank" href="https://www.udemy.com/">
-            <img  class="figure-img img-fluid rounded" src="{% static 'home/images/udemy.png' %}" />
-        </a>
 
+    <div class="col-sm-2 sidenav"">
+		 <p style="font-family: 'Lobster'; font-size: 40px;">Languages</p>
+        <ul>
+            <li>
+                C
+            </li>
+            <li>
+                C++
+            </li>
+            <li>
+                Python
+            </li>
+        </ul>
     </div>
+<div>
 
+</div>
 {% endblock %}

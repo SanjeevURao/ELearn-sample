@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import  User
 
 class Course(models.Model):
     Name = models.CharField(max_length=100)
@@ -21,3 +22,13 @@ class Instructor(models.Model):
 
     def __str__(self):
         return self.Name
+
+class Interest(models.Model):
+    user = models.ForeignKey(User)
+    Name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.Name
+
+    def get_absolute_url(self):
+        return reverse('home:index')

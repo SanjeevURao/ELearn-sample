@@ -2,15 +2,35 @@ body {
    background-image: url("images/background.png");
 }
 
+.temp {
+    height: auto
+    width : auto
+   background-image: url("images/books.jpg");
+}
+
+
 .navbar navbar-inverse {
     height : 50px;
 }
 
-img {
+img{
      width : 200px ;
      height : 200px ;
 }
 
- a {
- font-family: 'Nunito';
- }
+a {
+font-family: 'Nunito';
+}
+
+
+.sidenav{
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+#rcorners3 {
+    border-radius: 25px;
+    padding: 20px;
+
+}

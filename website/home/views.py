@@ -2,19 +2,21 @@ from django.template import loader
 from django.shortcuts import render , redirect
 from django.contrib.auth import authenticate , login
 from django.views.generic import View
-from .models import Instructor , Course
-from django.views.generic.edit import CreateView , UpdateView
+from .models import Instructor , Course , Interest
+from django.views.generic.edit import CreateView , UpdateView , DeleteView
 from .forms import UserForm
 from django.contrib.auth.decorators import login_required
-
+from .forms import InterestForm
+from django.core.urlresolvers import reverse_lazy
 
 @login_required(login_url='login')
 def index(request):
     template = loader.get_template('home/index.html')
-    return render(request,'home/index.html')
+    interests = Interest.objects.filter(user=request.user)
+    return render(request, 'home/index.html', {'interests': interests})
 
 
-
+@login_required(login_url='login')
 def people(request):
     all_people = Instructor.objects.all()
     return render(request , 'home/people.html' , {'people': all_people } )
@@ -26,16 +28,36 @@ def CourseView(request):
     template = loader.get_template('home/course.html')
     return render(request, 'home/course.html' , {'course':course_list})
 
+@login_required(login_url='login')
+def InterestView(request):
+     interests = Interest.objects.filter(user=request.user)
+     return render(request, 'home/viewInterest.html' , {'interests':interests})
 
+@login_required(login_url='login')
+def AddInterest(request):
+    if not request.user.is_authenticated():
+        return render(request, 'index/login.html')
+    else:
+        form = InterestForm(request.POST or None)
+        if form.is_valid():
+            interest = form.save(commit=False)
+            interest.user = request.user
 
-class CourseAdd(CreateView):
-    model = Course #trying to create a new album
-    fields=['Name' , 'Code' , 'Credits' , 'Semester' , 'Instructor']
+            interest.save()
+            interests = Interest.objects.filter(user=request.user)
+            return render(request, 'home/index.html', {'interests': interests})
+        context = {
+                "form": form,
+            }
+    return render(request, 'home/interest_form.html', context)
 
-class CourseUpdate(UpdateView):
-    model = Course #trying to create a new album
-    fields=['Name' , 'Code' , 'Credits' , 'Semester' , 'Instructor']
+class InterestDelete(DeleteView):
+    model = Interest
+    success_url = reverse_lazy('home:index')
 
+class InterestUpdate(UpdateView):
+    model = Interest
+    fields = ['Name']
 
 
 class UserFormView(View):
