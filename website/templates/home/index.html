@@ -12,9 +12,9 @@
 
         {% for c in interests %}
                 <li>
-                    <p>{{ c.Name }}</p>
+                    <p style="font-size:25px;">{{ c.Name }}</p>
                         <form action="{% url 'home:deleteinterest' c.id %}" method="post">{% csrf_token %}
-                            <input type="submit" value="Delete" />
+                            <button type="submit" class="btn btn-danger" value="Delete"> Delete </>
                         </form>
                 </li>
         {% endfor %}
@@ -26,7 +26,7 @@
 
 
 
-        <h1>Video Tutorials</h1>
+        <h1>Recommendations for you</h1>
             <img  class="figure-img img-fluid rounded" src="{% static 'home/images/java.png' %} " style="width:200px;height:200px" />
 
             <img  class="figure-img img-fluid rounded" src="{% static 'home/images/algebra.png' %} " style="width:200px;height:200px" />
@@ -50,21 +50,34 @@
 
 
 
-    <div class="col-sm-2 sidenav"">
-		 <p style="font-family: 'Lobster'; font-size: 40px;">Languages</p>
+    <div class="col-sm-2 sidenav">
+		 <p style="font-family: 'Lobster'; font-size: 40px;">Quick Links</p>
         <ul>
-            <li>
+            <li style="font-size:25px;">
                 C
             </li>
-            <li>
+            <li style="font-size:25px;">
                 C++
             </li>
-            <li>
+            <li style="font-size:25px;">
                 Python
             </li>
         </ul>
-    </div>
-<div>
 
-</div>
+         <p style="padding-top:50px;font-family: 'Lobster'; font-size: 40px;">Trending</p>
+        <ul>
+            <li style="font-size:20px;">
+                Coding Interview Questions
+            </li>
+            <li style="font-size:20px;">
+                Intro to Machine Learning
+            </li>
+            <li style="font-size:20px;">
+                Number Theory and Cryptography
+            </li>
+        </ul>
+
+
+    </div>
+
 {% endblock %}

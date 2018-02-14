@@ -5,9 +5,9 @@ from django.contrib.auth.models import  User
 class Course(models.Model):
     Name = models.CharField(max_length=100)
     Code = models.CharField(max_length=10)
-    Credits = models.IntegerField()
-    Semester = models.IntegerField()
+    University =  models.CharField(max_length=100 , null=True)
     Instructor = models.CharField(max_length=100)
+    Description = models.CharField(max_length=1000 , null=True)
 
     def get_absolute_url(self):
         return reverse('home:course')

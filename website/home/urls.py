@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^register$' , views.UserFormView.as_view() , name='register'),
     url(r'^login/$','django.contrib.auth.views.login', {'template_name': 'home/login.html'} ,name='login'),
     url(r'^course$' , views.CourseView, name='course'),
+    url(r'^courseguest$', views.CourseGuestView, name='courseguest'),
     url(r'^interest/add$' , views.AddInterest, name='addinterest'),
     url(r'^interests$', views.InterestView , name='viewinterest'),
     url(r'^interests/(?P<pk>[0-9]+)/delete/$', views.InterestDelete.as_view(), name='deleteinterest'),
