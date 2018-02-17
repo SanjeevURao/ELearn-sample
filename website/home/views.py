@@ -21,6 +21,10 @@ def people(request):
     all_people = Instructor.objects.all()
     return render(request , 'home/people.html' , {'people': all_people } )
 
+def course_details(request):
+    all_courses = Course.objects.all()
+    return render(request , 'home/details.html' , {'courses': all_courses} )
+
 def CourseGuestView(request):
     course_list = Course.objects.all()
     template = loader.get_template('home/courseguest.html')

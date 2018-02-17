@@ -4,12 +4,15 @@
 
 <h1>This page is maintained by the admin</h1>
 
-<h2>Show contact information of teachers</h2>
+<h2>Feel free to ask your doubts to our highly experienced faculty</h2>
 
 {% for instructor in people %}
 <ul>
     <li>
-        <p>{{ instructor.Name }}</p>
+        <h1>{{ instructor.Name }}</h1>
+        <h2>{{ instructor.Phone}}</h2>
+        <h3>{{ instructor.Email }}</h3>
+
     </li>
 </ul>
 {% endfor %}

@@ -8,6 +8,7 @@ class Course(models.Model):
     University =  models.CharField(max_length=100 , null=True)
     Instructor = models.CharField(max_length=100)
     Description = models.CharField(max_length=1000 , null=True)
+    Link = models.CharField(max_length=1000 , null=True)
 
     def get_absolute_url(self):
         return reverse('home:course')
