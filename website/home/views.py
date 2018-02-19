@@ -23,7 +23,8 @@ def people(request):
 
 def course_details(request):
     all_courses = Course.objects.all()
-    return render(request , 'home/details.html' , {'courses': all_courses} )
+    return render(request , 'home/details.html' , {'courses':
+                                                       all_courses} )
 
 def CourseGuestView(request):
     course_list = Course.objects.all()
